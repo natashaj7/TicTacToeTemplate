@@ -32,7 +32,7 @@ public class TicTacToe {
         printStream.println("Player 1 - Enter a number between 1 and 9:");
         int playerMove=0;
         try {
-            playerMove = parseInt(nextPlayerMove.readLine());
+            playerMove = parseInt(nextPlayerMove.readLine())-1;
         } catch (IOException e) {
             e.printStackTrace();
         }

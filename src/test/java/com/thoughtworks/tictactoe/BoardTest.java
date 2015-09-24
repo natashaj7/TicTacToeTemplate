@@ -39,7 +39,7 @@ public class BoardTest {
     @Test
     public void shouldDrawWhenBoardIsSet(){
         board.executeMove(2);
-        verify(printStream).print(contains("   |   | X"));
+        verify(printStream).print(contains("   | X | "));
     }
 
 }
