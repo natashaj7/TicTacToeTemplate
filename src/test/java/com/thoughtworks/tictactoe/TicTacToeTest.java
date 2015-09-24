@@ -29,7 +29,6 @@ public class TicTacToeTest {
         game = new TicTacToe(printStream, nextPlayerMove, board);
     }
 
-
     @Test
     public void shouldPrintTicTacToeBoardWhenGameStarts(){
         game.start();
@@ -43,22 +42,28 @@ public class TicTacToeTest {
     @Test
     public void shouldAskUserForInputWhenBoardIsDrawn() throws IOException {
         when(nextPlayerMove.readLine()).thenReturn("1");
-        game.getNextMove();
+        game.getNextMove(1);
         verify(printStream).println(contains("Enter a number"));
     }
 
     @Test
     public void shouldGetInputWhenUserIsAsked() throws IOException {
         when(nextPlayerMove.readLine()).thenReturn("1");
-        game.getNextMove();
+        game.getNextMove(1);
         verify(nextPlayerMove).readLine();
     }
 
     @Test
-    public void shouldRedrawBoardWhenPlayerEntersNextMove () throws IOException {
+    public void shouldRedrawBoardWhenPlayer1EntersNextMove () throws IOException {
         when(nextPlayerMove.readLine()).thenReturn("1");
-        game.getNextMove();
-        verify(board).executeMove(1);
+        game.getNextMove(1);
+        verify(board).executeMove(0,1); //move passed in execute move is one less that inputted bc it is an array index
+    }
+
+    public void shouldRedrawBoardWhenPlayer2EntersMove() throws IOException {
+        when(nextPlayerMove.readLine()).thenReturn("3");
+        game.getNextMove(2);
+        verify(board).executeMove(2,2); //move passed in execute move is one less that inputted bc it is an array index
     }
 
 }

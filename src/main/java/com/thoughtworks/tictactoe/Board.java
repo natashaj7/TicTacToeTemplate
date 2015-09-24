@@ -17,8 +17,12 @@ public class Board {
         this.board=board;
     }
 
-    public void executeMove(int playerMove) {
-        board[playerMove]="X";
+    public void executeMove(int playerMove, int player) {
+        if(player==1) {
+            board[playerMove] = "X";
+        }else{
+            board[playerMove] = "O";
+        }
         draw();
     }
 

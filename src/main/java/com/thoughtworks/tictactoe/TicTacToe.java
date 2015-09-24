@@ -28,14 +28,14 @@ public class TicTacToe {
                 "   |   |\n");
     }
 
-    public void getNextMove() {
-        printStream.println("Player 1 - Enter a number between 1 and 9:");
+    public void getNextMove(int player) {
+        printStream.println("Player "+player+" - Enter a number between 1 and 9:");
         int playerMove=0;
         try {
             playerMove = parseInt(nextPlayerMove.readLine())-1;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        board.executeMove(playerMove);
+        board.executeMove(playerMove, player);
     }
 }

@@ -32,14 +32,31 @@ public class BoardTest {
 
     @Test
     public void shouldSetBoardWithXWhenPlayer1ChoosesLocation(){
-        board.executeMove(2);
+        board.executeMove(2,1);
         assertEquals("X", boardContents[2]);
     }
 
     @Test
-    public void shouldDrawWhenBoardIsSet(){
-        board.executeMove(2);
+    public void shouldSetBoardWithOWhenPlayer2ChoosesLocation(){
+        board.executeMove(5,2);
+        assertEquals("O", boardContents[5]);
+    }
+
+    @Test
+    public void shouldDrawWhenPlayer1SetsBoard(){
+        board.executeMove(1,1);
         verify(printStream).print(contains("   | X | "));
     }
 
+    @Test
+    public void shouldDrawWhenPlayer2SetsBoard(){
+        board.executeMove(0,2);
+        verify(printStream).print(contains(" O |   | "));
+    }
+
+//    @Test
+//    public void shouldCheckIfSpotTakenWhenPlayerEntersMove(){
+//        board.executeMove(0,2);
+//        verify(board).checkIfEmpty();
+//    }
 }

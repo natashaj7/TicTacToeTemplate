@@ -15,7 +15,8 @@ public class Main {
         Board board = new Board(printStream, boardContents);
         TicTacToe game = new TicTacToe(printStream, nextPlayerMove, board);
         game.start();
-        game.getNextMove();
+        game.getNextMove(1);
+        game.getNextMove(2);
 
     }
 }
